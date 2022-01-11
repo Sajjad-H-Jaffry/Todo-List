@@ -1,13 +1,13 @@
 import React from 'react'
 
 const Footer = () => {
-    let footerStyle = {
-        position: "absolute",
-        top: "100vh",
-        width: "100%",
-    }
+    // let footerStyle = {
+    //     position: "relative",
+    //     top: "100vh",
+    //     width: "100%",
+    // }
     return (
-        <div className='bg-dark text-light' style={footerStyle}>
+        <div className='bg-dark text-light'>
             <p className='text-center'>
                 Copyright &copy; MyTodosList.com
             </p>
