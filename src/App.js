@@ -7,10 +7,18 @@ import React, {useState} from 'react';
 
 
 function App() {
+  let initTodo;
+  if(localStorage.getItem("todos")===null){
+    initTodo = [];
+  }
+  else{
+    initTodo = JSON.parse(localStorage.getItem("todos")); 
+  }
   const onDelete = (todo)=> {
     setTodos(todos.filter(e=> {
       return e!==todo;
     }));
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
   const addTodo = (title, desc)=> {
@@ -29,25 +37,11 @@ function App() {
     }
     setTodos([...todos, myTodo]);
     console.log(myTodo)
+
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
-  const [todos, setTodos] = useState([
-    {
-      sno : 1,
-      title : "Go to the market",
-      desc : "You nee to go the market to get the job done." 
-    },
-    {
-      sno : 2,
-      title : "Go to the mall",
-      desc : "You nee to go the market to get the job done2." 
-    },
-    {
-      sno : 3,
-      title : "Go to the gao",
-      desc : "You nee to go the market to get the job done3." 
-    },
-  ]);
+  const [todos, setTodos] = useState([initTodo]);
 
   return (
     <div>
