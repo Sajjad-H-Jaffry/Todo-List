@@ -3,7 +3,7 @@ import Header from './components/Header';
 import AddTodo from './components/AddTodo';
 import Todos from './components/Todos';
 import Footer from './components/Footer';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 function App() {
@@ -37,11 +37,12 @@ function App() {
     }
     setTodos([...todos, myTodo]);
     console.log(myTodo)
-
-    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
   const [todos, setTodos] = useState([initTodo]);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos])
 
   return (
     <div>
