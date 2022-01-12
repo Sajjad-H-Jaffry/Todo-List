@@ -2,8 +2,15 @@ import './App.css';
 import Header from './components/Header';
 import AddTodo from './components/AddTodo';
 import Todos from './components/Todos';
+import About from './components/About';
 import Footer from './components/Footer';
 import React, {useState, useEffect} from 'react';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from 'react-router-dom';
 
 
 function App() {
@@ -45,12 +52,33 @@ function App() {
     }, [todos])
 
   return (
-    <div>
+    <>
       <Header title="My Todos List" searchBar={false}/>
       <AddTodo addTodo={addTodo}/>
       <Todos todos={todos} onDelete={onDelete}/>
       <Footer/>
-    </div>
+
+
+    {/* <Router>
+      <Header title="My Todos List" searchBar={false}/>
+      <Switch>
+          <Route exact path="/" render={()=>{
+            return(
+              <>
+                <AddTodo addTodo={addTodo}/>
+                <Todos todos={todos} onDelete={onDelete}/>
+              </>
+            )
+          }}>
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+      </Switch>
+
+      <Footer/>
+    </Router> */}
+    </>
   );
 }
 
